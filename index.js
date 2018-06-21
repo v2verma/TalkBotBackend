@@ -21,11 +21,13 @@ var data = [
         "options":[
             {
                 "id":"11",
-                "value":"Yes, there is a preference!"
+                "value":"Yes, there is a preference!",
+                "back":"0"
             },
             {
                 "id":"2",
-                "value":"No, its a new application"   
+                "value":"No, its a new application",
+                "back":"0"   
             }]
         },{
         "key":"2",
@@ -33,11 +35,13 @@ var data = [
         "options":[
             {
                 "id":"21",
-                "value":"JS Library"
+                "value":"JS Library",
+                "back":"1"
             },
             {
                 "id":"22",
-                "value":"Full FrameWork"   
+                "value":"Full FrameWork",
+                "back":"1"   
             }]
         },{
         "key":"11",
@@ -45,11 +49,13 @@ var data = [
         "options":[
             {
                 "id":"22",
-                "value":"Full FrameWork"
+                "value":"Full FrameWork",
+                "back":"2"
             },
             {
                 "id":"21",
-                "value":"JS Library"   
+                "value":"JS Library",
+                "back":"2"   
             }]
         },{
         "key":"21",
@@ -57,11 +63,13 @@ var data = [
         "options":[
             {
                 "id":"small",
-                "value":"Small"
+                "value":"Small",
+                "back":"11"
             },
             {
                 "id":"large",
-                "value":"Large"   
+                "value":"Large",
+                "back":"11"   
             }]
         },{
         "key":"22",
@@ -69,11 +77,13 @@ var data = [
         "options":[
             {
                 "id":"small",
-                "value":"Small"
+                "value":"Small",
+                "back":"11"
             },
             {
                 "id":"large",
-                "value":"Large"   
+                "value":"Large",
+                "back":"11"   
             }]
         },{
         "key":"small",
@@ -166,6 +176,13 @@ app.post('/',function(req,res){
                 frontdata.options = content.options;
                 res.send(frontdata);
                 flag = 1;
+            }
+            if(content.key == req.body.backid){
+                var frontdata = {value:"",options:""}
+                frontdata.value = content.value;
+                frontdata.options = content.options;
+                res.send(frontdata);
+                flag = 1; 
             }
         }
         
