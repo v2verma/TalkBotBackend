@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var app = express();
 
 var data = [
@@ -161,12 +162,22 @@ var data = [
 
 
 app.use(bodyParser.json());
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res){
-  res.send('Hi, let me help you');
+app.use(function(req,res,next){
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Methods","HEAD,GET,POST,PATCH,OPTIONS,PUT,DELETE");
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
+
+app.get('/api', function(req, res){
+  res.send({object:'xyz'});
 });
 
-app.post('/',function(req,res){
+app.post('/api/bot',function(req,res){
     var flag = 0;
     data.map((content)=>{
         if(flag == 0){
