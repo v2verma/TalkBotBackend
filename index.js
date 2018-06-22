@@ -181,7 +181,7 @@ app.post('/api/bot',function(req,res){
     var flag = 0;
     data.map((content)=>{
         if(flag == 0){
-            if(content.key == req.body.id){
+            if(content.key == req.body.id ){
                 var frontdata = {value:"",options:""}
                 frontdata.value = content.value;
                 frontdata.options = content.options;
