@@ -6,7 +6,7 @@ var app = express();
 var data = [
     {
         "key":"0",
-        "value":"Ok, Tell me is it a new or expanding existing application ?",
+        "value":"Tell me is it a new or expanding existing application ?",
         "options":[
             {
                 "id":"1",
@@ -173,11 +173,11 @@ app.use(function(req,res,next){
   });
 
 
-app.get('/api', function(req, res){
-  res.send({object:'xyz'});
+app.get('/botroute', function(req, res){
+  res.send("You are at right place, let me help you !");
 });
 
-app.post('/api/bot',function(req,res){
+app.post('/botroute',function(req,res){
     var flag = 0;
     data.map((content)=>{
         if(flag == 0){
