@@ -6,6 +6,7 @@ var app = express();
 var data = [
     {
         "key":"0",
+        "back":"",
         "value":"Good to hear. So tell me, Is it a new application or you are looking to expand an existing application?",
         "options":[
             {
@@ -30,17 +31,16 @@ var data = [
                 }]
             },{
         "key":"1",
+        "back":"0",
         "value":"Are there any existing JS technologies adopted and is there a preference to use the same?",
         "options":[
             {
                 "id":"11",
-                "value":"Yes, there is a preference!",
-                "back":"0"
+                "value":"Yes, there is a preference!"
             },
             {
                 "id":"2",
-                "value":"No, its a new application",
-                "back":"0"   
+                "value":"No, its a new application"
             }]
         },{
         "key":"2",
