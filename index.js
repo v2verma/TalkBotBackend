@@ -10,7 +10,8 @@ var solution = [{"id":"mongo",
 
 var data = [{
     "key":"0",
-    "value":"Great to hear. How would you define the size of your application?",
+    "value":["Great! I will help you deicide what kind of database is best suited for your application.",
+     "How would you define the size of your application?"],
     "options":[
         {
             "id":"mongo",
@@ -22,7 +23,7 @@ var data = [{
         }]
     },{
     "key":"1",
-    "value":"Is it a user based application or a corporate based application?",
+    "value":["Is it a user based application or will it be corporate based?"],
     "options":[
         {
             "id":"mongo",
@@ -35,7 +36,7 @@ var data = [{
     },
      {
     "key":"2",
-    "value":"Do you have a pre-defined structure or set schemas?",
+    "value":["Do you have a pre-defined structure or set schemas?"],
     "options":[
         {
             "id":"mongo",
@@ -47,7 +48,7 @@ var data = [{
         }]
     },{
     "key":"3",
-    "value":"Does your application require multi-row transactions, like accounting systems or systems that monitor inventory structures?",
+    "value":["Does your application require multi-row transactions, like accounting systems or systems that monitor inventory structures?"],
     "options":[
         {
             "id":"mongo",
@@ -60,7 +61,7 @@ var data = [{
     },
      {
     "key":"4",
-    "value":"Will you use your data for analytics?",
+    "value":["Will you use your data for analytics?"],
     "options":[
         {
             "id":"mongo",
@@ -72,7 +73,7 @@ var data = [{
         }]
     },{
     "key":"5",
-    "value":"What is the cost allowance for the database in your project?",
+    "value":["What is the cost allowance for the database in your project?"],
     "options":[
         {
             "id":"mongo",
@@ -270,8 +271,8 @@ app.get('/botroute', function(req, res){
 });
 
 app.post('/dataSolution',function(req,res){
-    console.log(req.body)
-    if(req.body.value.mongo>req.body.value.sql){
+    // console.log(req.body)
+    if(req.body.value.mongo>=req.body.value.sql){
         res.send(solution[0])
     }
     else if(req.body.value.sql>req.body.value.mongo){
@@ -285,8 +286,9 @@ app.post('/botroute',function(req,res){
     data.map((content)=>{
         if(flag == 0){
             if(content.key == req.body.id ){
-                var frontdata = {value:"",options:""}
+                var frontdata = {value:[],options:""}
                 frontdata.value = content.value;
+                // console.log(frontdata.value.length)
                 frontdata.options = content.options;
                 res.send(frontdata);
                 flag = 1;
