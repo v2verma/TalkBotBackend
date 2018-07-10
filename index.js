@@ -4,13 +4,15 @@ var cors = require('cors');
 var app = express();
 
 var solution = [{"id":"mongo",
-"value":"After all the questions i will suggest that, Mongo DB is better suited for your project "
+"value":"After the analysis, I would suggest that, Mongo DB is better suited for your project!"
 },{"id":"sql",
-"value":"After all the questions i will suggest that, SQL is better suited for your project "}];
+"value":"After all the questions, I suggest that SQL is better suited for your application! "}];
 
 var data = [{
     "key":"0",
-    "value":["Great! I will help you deicide what kind of database is best suited for your application.",
+    "backid":null,
+    "next":"1",
+    "value":["Great! I will help you decide what kind of database is best suited for your application.",
      "How would you define the size of your application?"],
     "options":[
         {
@@ -23,6 +25,8 @@ var data = [{
         }]
     },{
     "key":"1",
+    "backid":"0",
+    "next":"2",
     "value":["Is it a user based application or will it be corporate based?"],
     "options":[
         {
@@ -36,6 +40,8 @@ var data = [{
     },
      {
     "key":"2",
+    "backid":"1",
+    "next":"3",
     "value":["Do you have a pre-defined structure or set schemas?"],
     "options":[
         {
@@ -48,6 +54,8 @@ var data = [{
         }]
     },{
     "key":"3",
+    "backid":"2",
+    "next":"4",
     "value":["Does your application require multi-row transactions, like accounting systems or systems that monitor inventory structures?"],
     "options":[
         {
@@ -61,6 +69,8 @@ var data = [{
     },
      {
     "key":"4",
+    "backid":"3",
+    "next":"5",
     "value":["Will you use your data for analytics?"],
     "options":[
         {
@@ -73,6 +83,8 @@ var data = [{
         }]
     },{
     "key":"5",
+    "backid":"4",
+    "next":"6",
     "value":["What is the cost allowance for the database in your project?"],
     "options":[
         {
@@ -286,16 +298,22 @@ app.post('/botroute',function(req,res){
     data.map((content)=>{
         if(flag == 0){
             if(content.key == req.body.id ){
-                var frontdata = {value:[],options:""}
+                var frontdata = {value:[],options:"",backid:"",next:""}
                 frontdata.value = content.value;
+                frontdata.backid = content.backid;
+                // console.log(content.next)
+                frontdata.next = content.next;
                 // console.log(frontdata.value.length)
                 frontdata.options = content.options;
                 res.send(frontdata);
                 flag = 1;
             }
             if(content.key == req.body.backid){
-                var frontdata = {value:"",options:""}
+                var frontdata = {value:"",options:"",backid:"",next:""}
                 frontdata.value = content.value;
+                frontdata.backid = content.backid;
+                // console.log(content.next)
+                frontdata.next = content.next;
                 frontdata.options = content.options;
                 res.send(frontdata);
                 flag = 1; 
