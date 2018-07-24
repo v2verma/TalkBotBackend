@@ -14,6 +14,7 @@ var data = [{
     "next":"1",
     "value":["Great! I will help you decide what kind of database is best suited for your application.",
      "How would you define the size of your application?"],
+     "videos":["https://www.youtube.com/embed/rN0FrDpQNUk"],
     "options":[
         {
             "id":"mongo",
@@ -28,6 +29,7 @@ var data = [{
     "backid":"0",
     "next":"2",
     "value":["Is it a user based application or will it be corporate based?"],
+    "videos":["https://www.youtube.com/embed/bGvVxk5xqNQ"],
     "options":[
         {
             "id":"mongo",
@@ -38,65 +40,70 @@ var data = [{
             "value":"Corporate"   
         }]
     },
-     {
-    "key":"2",
-    "backid":"1",
-    "next":"3",
-    "value":["Do you have a pre-defined structure or set schemas?"],
-    "options":[
-        {
-            "id":"mongo",
-            "value":"No"
-        },
-        {
-            "id":"sql",
-            "value":"Yes"   
-        }]
-    },{
-    "key":"3",
-    "backid":"2",
-    "next":"4",
-    "value":["Does your application require multi-row transactions, like accounting systems or systems that monitor inventory structures?"],
-    "options":[
-        {
-            "id":"mongo",
-            "value":"No"
-        },
-        {
-            "id":"sql",
-            "value":"Yes"   
-        }]
-    },
-     {
-    "key":"4",
-    "backid":"3",
-    "next":"5",
-    "value":["Will you use your data for analytics?"],
-    "options":[
-        {
-            "id":"mongo",
-            "value":"Yes"
-        },
-        {
-            "id":"sql",
-            "value":"No"   
-        }]
-    },{
-    "key":"5",
-    "backid":"4",
-    "next":"6",
-    "value":["What is the cost allowance for the database in your project?"],
-    "options":[
-        {
-            "id":"mongo",
-            "value":"Low"
-        },
-        {
-            "id":"sql",
-            "value":"Good"   
-        }]
-    }];
-// var data = [
+    {
+        "key":"2",
+        "backid":"1",
+        "next":"3",
+        "value":["Do you have a pre-defined structure or set schemas?"],
+        "videos":["https://www.youtube.com/embed/bGvVxk5xqNQ"],
+        "options":[
+            {
+                "id":"mongo",
+                "value":"No"
+            },
+            {
+                "id":"sql",
+                "value":"Yes"   
+            }]
+        },{
+            "key":"3",
+            "backid":"2",
+            "next":"4",
+            "value":["Does your application require multi-row transactions, like accounting systems or systems that monitor inventory structures?"],
+            "videos":["https://www.youtube.com/embed/bGvVxk5xqNQ"],
+            "options":[
+                {
+                    "id":"mongo",
+                    "value":"No"
+                },
+                {
+                    "id":"sql",
+                    "value":"Yes"   
+                }]
+            },
+            {
+                "key":"4",
+                "backid":"3",
+                "next":"5",
+                "value":["Will you use your data for analytics?"],
+                "videos":["https://www.youtube.com/embed/bGvVxk5xqNQ"],
+                "options":[
+                    {
+                        "id":"mongo",
+                        "value":"Yes"
+                    },
+                    {
+                        "id":"sql",
+                        "value":"No"   
+                    }]
+                },{
+                    "key":"5",
+                    "backid":"4",
+                    "next":"6",
+                    "value":["What is the cost allowance for the database in your project?"],
+                    "videos":["https://www.youtube.com/embed/bGvVxk5xqNQ"],
+                    "options":[
+                        {
+                            "id":"mongo",
+                            "value":"Low"
+                        },
+                        {
+                            "id":"sql",
+                            "value":"Good"   
+                        }]
+                    }];
+                    // var data = [
+                       
 //     {
 //         "key":"0",
 //         "back":"",
@@ -300,6 +307,7 @@ app.post('/botroute',function(req,res){
             if(content.key == req.body.id ){
                 var frontdata = {value:[],options:"",backid:"",next:""}
                 frontdata.value = content.value;
+                frontdata.videos = content.videos;
                 frontdata.backid = content.backid;
                 // console.log(content.next)
                 frontdata.next = content.next;
@@ -312,6 +320,7 @@ app.post('/botroute',function(req,res){
                 var frontdata = {value:"",options:"",backid:"",next:""}
                 frontdata.value = content.value;
                 frontdata.backid = content.backid;
+                frontdata.videos = content.videos;
                 // console.log(content.next)
                 frontdata.next = content.next;
                 frontdata.options = content.options;
